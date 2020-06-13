@@ -182,9 +182,10 @@ class Ui_MainWindow(object):
         self.calendarWidget.setObjectName("calendarWidget")
         MainWindow.setCentralWidget(self.centralwidget)
 
+        # 更新文本内容
         self.retranslateUi(MainWindow)
 
-        # 自动更新时间
+        # 设置计时器自动更新时间
         self.timer = QTimer()
         self.timer.setInterval(1000)
         self.timer.start()
@@ -194,12 +195,13 @@ class Ui_MainWindow(object):
         self.pushButton.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    # 自动更新时间
+    # 更新时间
     def update(self):
         TimeDate = QDateTime.currentDateTime()
         timeDisplay = TimeDate.toString("hh:mm:ss")
         self.label_3.setText(timeDisplay)
 
+    # 更新文本内容
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Live Data Collection By 57117137刘康亮"))
