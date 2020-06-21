@@ -63,6 +63,15 @@ def get_conn_info():
     return info
 
 
+# 查看本地DNS信息
+def get_dns_info():
+    command = 'ipconfig /displaydns'
+    r = os.popen(command)
+    info = r.read()
+    info.strip()
+    return info
+
+
 # 获取用户信息
 def get_user_info():
     command = 'net user'
@@ -87,6 +96,8 @@ def get_file_handle():
     r = os.popen(command)
     info = r.read()
     info.strip()
+    if info == "":
+        info = "ERROR!!! Please make sure 'handle64.exe' has been put in the SAME file folder."
     return info
 
 
@@ -96,6 +107,8 @@ def get_disk_info():
     r = os.popen(command)
     info = r.read()
     info.strip()
+    if info == "":
+        info = "ERROR!!! Please make sure 'diskext64.exe' has been put in the SAME file folder."
     return info
 
 
